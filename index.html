@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Jimena ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    font-family: Arial;
+    overflow-y: auto;
+}
+
+/* SOBRE */
+.sobre-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sobre {
+    width: 300px;
+    height: 200px;
+    background: #ff4d6d;
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.tapa {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff1e4d;
+    clip-path: polygon(0 0, 100% 0, 50% 50%);
+    transform-origin: top;
+    transition: 1s;
+}
+
+.mensaje-sobre {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    top: 70px;
+    font-size: 18px;
+}
+
+/* CARTA */
+.contenedor {
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 10px;
+}
+
+.carta {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0px 0px 25px rgba(0,0,0,0.3);
+    animation: aparecer 1.5s ease;
+}
+
+@keyframes aparecer {
+    from {transform: scale(0.5); opacity:0;}
+    to {transform: scale(1); opacity:1;}
+}
+
+/* corazones */
+.corazon {
+    position: fixed;
+    top: -10px;
+    color: red;
+    animation: caer linear infinite;
+    z-index: 0;
+}
+
+@keyframes caer {
+    to {transform: translateY(100vh);}
+}
+
+/* imagen */
+img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* botones */
+button {
+    margin: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#si {
+    background: #ff4d6d;
+    color: white;
+}
+
+#no {
+    background: gray;
+    color: white;
+    position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/EA6u3Pc5B2s?autoplay=1&loop=1&playlist=EA6u3Pc5B2s"
+frameborder="0" allow="autoplay">
+</iframe>
+
+<div class="sobre-container" onclick="abrirSobre()">
+    <div class="sobre">
+        <div class="tapa" id="tapa"></div>
+        <div class="mensaje-sobre">
+            De cachito para Joss ❤️
+        </div>
+    </div>
+</div>
+
+<div class="contenedor" id="carta">
+
+<div class="carta">
+
+<img src="tu-foto.jpg">
+
+<h1>Perdóname mi vida 🥺💔</h1>
+
+<p>
+Jimena Joseline Vera Rios. No hay forma fácil de decir esto pero lo voy a hacer y con toda la honestidad que tengo, me equivoqué, la cagué y la cagué de la peor forma. No solo tomé la peor decisión al alejarme de ti, sino que después te lastimé de la peor manera posible, te hice perder esa confianza y el apoyo que sentías de mi parte con mis palabras. Eso es algo que no puedo justificar, nada de lo que dije es lo que realmente siento, fueron palabras nacidas desde mi enojo, mi inmadurez y mis propios problemas pero aún así te hicieron daño y eso es completamente mi responsabilidad. Me duele profundamente haber sido la persona que te hizo sentir que no eras suficiente cuando en realidad eres todo lo contrario. Eres una mujer increíble, valiosa, fuerte y mereces a alguien que te cuide, te respete y te haga sentir segura, no alguien que te rompa de esa manera cada que se enoja. Estoy trabajando en mí de verdad, estoy aprendiendo a controlar mi enojo, a no reaccionar desde la ira, a pensar antes de hablar, porque entendí que no quiero volver a convertirme en alguien que lastime a quien ama. No quiero perderte, no necesito experimentar con nadie más, no estoy buscando nada afuera porque lo que quiero, lo que valoro y lo que amo, eres tú 💖. No te estoy pidiendo que olvides lo que pasó de un día para otro, pero sí que me des la oportunidad de demostrarte con hechos que puedo cambiar, que puedo ser mejor, que puedo ser el hombre que sí esté a la altura de lo que mereces. Si decides darme otra oportunidad créeme que volveré y lo daré todo porque ahora entiendo lo que significa perderte. Te amo mi princesa hermosa "Joseline 💖" y esta vez no quiero fallarte. Amor no es soltar, con todo mi corazón y todo mi ser, tu cachito 💖.
+</p>
+
+<button id="si" onclick="aceptar()">Sí 💖</button>
+<button id="no" onmouseover="mover()">No 😢</button>
+
+</div>
+</div>
+
+<script>
+function abrirSobre(){
+    document.getElementById("tapa").style.transform = "rotateX(180deg)";
+    setTimeout(()=>{
+        document.querySelector(".sobre-container").style.display="none";
+        document.getElementById("carta").style.display="flex";
+    },1000);
+}
+
+function crearCorazon(){
+    const c = document.createElement("div");
+    c.classList.add("corazon");
+    c.innerHTML = "❤️";
+    c.style.left = Math.random()*100+"vw";
+    c.style.animationDuration = (Math.random()*3+2)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5000);
+}
+setInterval(crearCorazon, 300);
+
+function mover(){
+    const btn = document.getElementById("no");
+    btn.style.top = Math.random()*80+"vh";
+    btn.style.left = Math.random()*80+"vw";
+}
+
+function aceptar(){
+    alert("Gracias mi amor, de verdad gracias por darme esta segunda oportunidad.\n\nNo sabes lo que significa para mí.\n\nTe prometo con hechos, no solo palabras, que voy a cambiar, que voy a cuidar de ti, respetarte y darte la tranquilidad que mereces.\n\nVoy a trabajar en mí todos los días para ser alguien que te haga sentir segura, protegida y amada como nunca debiste dejar de sentirlo.\n\nNo voy a fallarte otra vez porque ahora entendí que no quiero una vida sin ti.\n\nTe amo, y esta vez lo voy a demostrar.");
+}
+</script>
+
+</body>
+</html>
